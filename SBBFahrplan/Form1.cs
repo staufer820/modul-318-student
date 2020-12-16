@@ -21,23 +21,37 @@ namespace SBBFahrplan
 		public Form1()
 		{
 			InitializeComponent();
-			
-			
 		}
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			Connections con = transport.GetConnections(tbxFrom.Text, tbxTo.Text);
-			foreach (var c in con.ConnectionList)
+			if (con.ConnectionList.Count > 0)
 			{
-				DateTime departure = Convert.ToDateTime(c.From.Departure);
-				DateTime arrival = Convert.ToDateTime(c.To.Arrival);
-				string platform = c.From.Platform;
-				
-				
-				
-				this.dgvResults.Rows.Add(departure, arrival, platform);
+				foreach (var c in con.ConnectionList)
+				{
+					
+					string departure = c.From.Departure.ToString().Substring(11, 5);
+					string arrival = c.To.Arrival.ToString().Substring(11, 5);
+					string platform = c.From.Platform;
+					string delay = c.From.Delay.ToString();
+
+					this.dgvResults.Rows.Add(departure, arrival, platform);
+				}
+
+				lblConnection.Text = "Von " + tbxFrom.Text + " nach " + tbxTo.Text;
 			}
+		}
+
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			
+		}
+
+		private void btnStation_Click(object sender, EventArgs e)
+		{
+			Stations station = transport.GetStations(tbxStation.Text);
+			
 		}
 	}
 }
