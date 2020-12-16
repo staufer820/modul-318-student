@@ -14,11 +14,11 @@ using SwissTransport.Models;
 
 namespace SBBFahrplan
 {
-	public partial class Form1 : Form
+	public partial class Form : System.Windows.Forms.Form
 	{
 		private ITransport transport = new Transport();
 		
-		public Form1()
+		public Form()
 		{
 			InitializeComponent();
 		}
@@ -39,18 +39,26 @@ namespace SBBFahrplan
 					this.dgvResults.Rows.Add(departure, arrival, platform);
 				}
 
-				lblConnection.Text = "Von " + tbxFrom.Text + " nach " + tbxTo.Text;
+				lblVerbindung.Text = "Von " + tbxFrom.Text + " nach " + tbxTo.Text;
 			}
-		}
-
-		private void Form1_Load(object sender, EventArgs e)
-		{
-			
 		}
 
 		private void btnStation_Click(object sender, EventArgs e)
 		{
-			Stations station = transport.GetStations(tbxStation.Text);
+			StationBoardRoot station = transport.GetStationBoard(tbxStation.Text, "0");
+
+			if (tbxStation.Text != "")
+			{
+				if (station.Entries.Count != 0)
+				{
+					foreach (var con in station.Entries)
+					{
+						dgvConnections.Rows.Add(con.Name, con.Stop.Departure.ToString().Substring(11, 5), con.To);
+					}
+
+					lblVerbindungenVon.Text = "Verbindungen von " + tbxStation.Text;
+				}
+			}
 			
 		}
 	}
