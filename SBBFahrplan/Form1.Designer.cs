@@ -48,6 +48,7 @@
 			this.tbxTo = new System.Windows.Forms.TextBox();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.tabPage3 = new System.Windows.Forms.TabPage();
+			this.lbxTafel = new System.Windows.Forms.ListBox();
 			this.lblVerbindungenVon = new System.Windows.Forms.Label();
 			this.btnStation = new System.Windows.Forms.Button();
 			this.dgvConnections = new System.Windows.Forms.DataGridView();
@@ -64,7 +65,6 @@
 			this.tbxLocation = new System.Windows.Forms.TextBox();
 			this.label6 = new System.Windows.Forms.Label();
 			this.lblConnection = new System.Windows.Forms.Label();
-			this.lbxTafel = new System.Windows.Forms.ListBox();
 			this.panel2.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -306,6 +306,16 @@
 			this.tabPage3.Text = "Anzeigetafel";
 			this.tabPage3.UseVisualStyleBackColor = true;
 			// 
+			// lbxTafel
+			// 
+			this.lbxTafel.FormattingEnabled = true;
+			this.lbxTafel.ItemHeight = 21;
+			this.lbxTafel.Location = new System.Drawing.Point(112, 76);
+			this.lbxTafel.Name = "lbxTafel";
+			this.lbxTafel.Size = new System.Drawing.Size(183, 172);
+			this.lbxTafel.TabIndex = 5;
+			this.lbxTafel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lbxTafel_KeyDown);
+			// 
 			// lblVerbindungenVon
 			// 
 			this.lblVerbindungenVon.AutoSize = true;
@@ -484,16 +494,6 @@
 			this.lblConnection.Size = new System.Drawing.Size(0, 28);
 			this.lblConnection.TabIndex = 8;
 			// 
-			// lbxTafel
-			// 
-			this.lbxTafel.FormattingEnabled = true;
-			this.lbxTafel.ItemHeight = 21;
-			this.lbxTafel.Location = new System.Drawing.Point(112, 76);
-			this.lbxTafel.Name = "lbxTafel";
-			this.lbxTafel.Size = new System.Drawing.Size(183, 172);
-			this.lbxTafel.TabIndex = 5;
-			this.lbxTafel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lbxTafel_KeyDown);
-			// 
 			// Form
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -505,6 +505,8 @@
 			this.ForeColor = System.Drawing.Color.SaddleBrown;
 			this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
 			this.MaximizeBox = false;
+			this.MaximumSize = new System.Drawing.Size(731, 696);
+			this.MinimumSize = new System.Drawing.Size(731, 696);
 			this.Name = "Form";
 			this.ShowIcon = false;
 			this.Text = "SBB CFF FFS";
