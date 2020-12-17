@@ -87,5 +87,33 @@ namespace SBBFahrplan
 			}
 			
 		}
+
+		private void btnSearchStations_Click(object sender, EventArgs e)
+		{
+			if (tbxLocation.Text != "")
+			{
+				try
+				{
+					Stations stations = transport.GetStations(tbxLocation.Text);
+					if (stations.StationList.Count > 0)
+					{
+						foreach (var station in stations.StationList)
+						{
+							string stationname = station.Name;
+							string distance = station.Distance.ToString();
+							dgvStations.Rows.Add(stationname, distance);
+						}
+					}
+				}
+				catch
+				{
+					MessageBox.Show("Etwas ist schiefgelaufen");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Bitte das Feld ausfüllen");
+			}
+		}
 	}
 }
