@@ -1,4 +1,6 @@
-﻿namespace SwissTransport
+﻿using System;
+
+namespace SwissTransport
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -34,7 +36,7 @@
         public void Connections()
         {
             testee = new Transport();
-            var connections = this.testee.GetConnections("Sursee", "Luzern");
+            var connections = this.testee.GetConnections("Sursee", "Luzern", DateTime.Today, DateTime.Now);
 
             Assert.IsNotNull(connections);
         }

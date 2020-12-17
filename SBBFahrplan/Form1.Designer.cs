@@ -47,12 +47,17 @@
 			this.lblVerbindungenVon = new System.Windows.Forms.Label();
 			this.btnStation = new System.Windows.Forms.Button();
 			this.dgvConnections = new System.Windows.Forms.DataGridView();
-			this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.StationName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Departure = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Endstation = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.tbxStation = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
+			this.tabPage2 = new System.Windows.Forms.TabPage();
 			this.lblConnection = new System.Windows.Forms.Label();
+			this.dtpDate = new System.Windows.Forms.DateTimePicker();
+			this.label1 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.dtpTime = new System.Windows.Forms.DateTimePicker();
 			this.panel2.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -76,6 +81,7 @@
 			this.tabControl.AccessibleName = "";
 			this.tabControl.Controls.Add(this.tabPage1);
 			this.tabControl.Controls.Add(this.tabPage3);
+			this.tabControl.Controls.Add(this.tabPage2);
 			this.tabControl.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tabControl.Location = new System.Drawing.Point(4, 0);
 			this.tabControl.Name = "tabControl";
@@ -101,7 +107,7 @@
 			this.lblVerbindung.AutoSize = true;
 			this.lblVerbindung.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblVerbindung.ForeColor = System.Drawing.Color.SaddleBrown;
-			this.lblVerbindung.Location = new System.Drawing.Point(33, 151);
+			this.lblVerbindung.Location = new System.Drawing.Point(51, 205);
 			this.lblVerbindung.Name = "lblVerbindung";
 			this.lblVerbindung.Size = new System.Drawing.Size(0, 22);
 			this.lblVerbindung.TabIndex = 8;
@@ -118,11 +124,11 @@
             this.Gleis,
             this.Verspätung});
 			this.dgvResults.GridColor = System.Drawing.Color.Silver;
-			this.dgvResults.Location = new System.Drawing.Point(-3, 190);
+			this.dgvResults.Location = new System.Drawing.Point(-3, 256);
 			this.dgvResults.Name = "dgvResults";
 			this.dgvResults.RowHeadersWidth = 71;
 			this.dgvResults.RowTemplate.Height = 24;
-			this.dgvResults.Size = new System.Drawing.Size(705, 420);
+			this.dgvResults.Size = new System.Drawing.Size(705, 354);
 			this.dgvResults.TabIndex = 7;
 			// 
 			// Abfahrt
@@ -160,6 +166,10 @@
 			// panel1
 			// 
 			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.panel1.Controls.Add(this.dtpTime);
+			this.panel1.Controls.Add(this.label5);
+			this.panel1.Controls.Add(this.label1);
+			this.panel1.Controls.Add(this.dtpDate);
 			this.panel1.Controls.Add(this.label3);
 			this.panel1.Controls.Add(this.label2);
 			this.panel1.Controls.Add(this.tbxFrom);
@@ -168,7 +178,7 @@
 			this.panel1.ForeColor = System.Drawing.Color.LightGray;
 			this.panel1.Location = new System.Drawing.Point(3, 16);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(691, 103);
+			this.panel1.Size = new System.Drawing.Size(691, 150);
 			this.panel1.TabIndex = 6;
 			// 
 			// label3
@@ -281,7 +291,7 @@
 			this.dgvConnections.BackgroundColor = System.Drawing.Color.SandyBrown;
 			this.dgvConnections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvConnections.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
+            this.StationName,
             this.Departure,
             this.Endstation});
 			this.dgvConnections.GridColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -292,13 +302,13 @@
 			this.dgvConnections.Size = new System.Drawing.Size(701, 397);
 			this.dgvConnections.TabIndex = 2;
 			// 
-			// Name
+			// StationName
 			// 
-			this.Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.Name.HeaderText = "Name";
-			this.Name.MinimumWidth = 6;
-			this.Name.Name = "Name";
-			this.Name.Width = 218;
+			this.StationName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.StationName.HeaderText = "Name";
+			this.StationName.MinimumWidth = 6;
+			this.StationName.Name = "StationName";
+			this.StationName.Width = 218;
 			// 
 			// Departure
 			// 
@@ -335,6 +345,16 @@
 			this.label4.TabIndex = 0;
 			this.label4.Text = "Station:";
 			// 
+			// tabPage2
+			// 
+			this.tabPage2.Location = new System.Drawing.Point(4, 30);
+			this.tabPage2.Name = "tabPage2";
+			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage2.Size = new System.Drawing.Size(701, 613);
+			this.tabPage2.TabIndex = 3;
+			this.tabPage2.Text = "Stationen";
+			this.tabPage2.UseVisualStyleBackColor = true;
+			// 
 			// lblConnection
 			// 
 			this.lblConnection.AutoSize = true;
@@ -345,6 +365,42 @@
 			this.lblConnection.Name = "lblConnection";
 			this.lblConnection.Size = new System.Drawing.Size(0, 28);
 			this.lblConnection.TabIndex = 8;
+			// 
+			// dtpDate
+			// 
+			this.dtpDate.Location = new System.Drawing.Point(100, 97);
+			this.dtpDate.Name = "dtpDate";
+			this.dtpDate.Size = new System.Drawing.Size(164, 28);
+			this.dtpDate.TabIndex = 6;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
+			this.label1.Location = new System.Drawing.Point(24, 103);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(70, 22);
+			this.label1.TabIndex = 7;
+			this.label1.Text = "Datum:";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.ForeColor = System.Drawing.Color.SaddleBrown;
+			this.label5.Location = new System.Drawing.Point(310, 103);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(47, 22);
+			this.label5.TabIndex = 8;
+			this.label5.Text = "Zeit:";
+			// 
+			// dtpTime
+			// 
+			this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpTime.Location = new System.Drawing.Point(362, 97);
+			this.dtpTime.Name = "dtpTime";
+			this.dtpTime.Size = new System.Drawing.Size(164, 28);
+			this.dtpTime.TabIndex = 9;
+			this.dtpTime.Value = new System.DateTime(2020, 12, 17, 9, 5, 0, 0);
 			// 
 			// Form
 			// 
@@ -392,7 +448,7 @@
 		private System.Windows.Forms.Label lblVerbindungenVon;
 		private System.Windows.Forms.Button btnStation;
 		private System.Windows.Forms.DataGridView dgvConnections;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Name;
+		private System.Windows.Forms.DataGridViewTextBoxColumn StationName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Departure;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Endstation;
 		private System.Windows.Forms.TextBox tbxStation;
@@ -401,6 +457,11 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Ankunft;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Gleis;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Verspätung;
+		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.DateTimePicker dtpTime;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.DateTimePicker dtpDate;
 	}
 }
 

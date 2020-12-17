@@ -25,39 +25,65 @@ namespace SBBFahrplan
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			Connections con = transport.GetConnections(tbxFrom.Text, tbxTo.Text);
-			if (con.ConnectionList.Count > 0)
+			if (tbxFrom.Text != "" && tbxTo.Text != "")
 			{
-				foreach (var c in con.ConnectionList)
+				try
 				{
-					
-					string departure = c.From.Departure.ToString().Substring(11, 5);
-					string arrival = c.To.Arrival.ToString().Substring(11, 5);
-					string platform = c.From.Platform;
-					string delay = c.From.Delay.ToString();
+					Connections con = transport.GetConnections(tbxFrom.Text, tbxTo.Text, Convert.ToDateTime(dtpDate.Text), Convert.ToDateTime(dtpTime.Text));
+					if (con.ConnectionList.Count > 0)
+					{
+						foreach (var c in con.ConnectionList)
+						{
 
-					this.dgvResults.Rows.Add(departure, arrival, platform);
+							string departure = c.From.Departure.ToString().Substring(11, 5);
+							string arrival = c.To.Arrival.ToString().Substring(11, 5);
+							string platform = c.From.Platform;
+							string delay = c.From.Delay.ToString();
+
+							this.dgvResults.Rows.Add(departure, arrival, platform);
+						}
+
+						lblVerbindung.Text = "Von " + tbxFrom.Text + " nach " + tbxTo.Text;
+					}
 				}
-
-				lblVerbindung.Text = "Von " + tbxFrom.Text + " nach " + tbxTo.Text;
+				catch
+				{
+					MessageBox.Show("Bitte überprüfen Sie Ihre Eingaben");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Bitte beide Felder ausfüllen");
 			}
 		}
 
 		private void btnStation_Click(object sender, EventArgs e)
 		{
-			StationBoardRoot station = transport.GetStationBoard(tbxStation.Text, "0");
+			
 
 			if (tbxStation.Text != "")
 			{
-				if (station.Entries.Count != 0)
+				try
 				{
-					foreach (var con in station.Entries)
+					StationBoardRoot station = transport.GetStationBoard(tbxStation.Text, "0");
+					if (station.Entries.Count != 0)
 					{
-						dgvConnections.Rows.Add(con.Name, con.Stop.Departure.ToString().Substring(11, 5), con.To);
-					}
+						foreach (var con in station.Entries)
+						{
+							dgvConnections.Rows.Add(con.Name, con.Stop.Departure.ToString().Substring(11, 5), con.To);
+						}
 
-					lblVerbindungenVon.Text = "Verbindungen von " + tbxStation.Text;
+						lblVerbindungenVon.Text = "Verbindungen von " + tbxStation.Text;
+					}
 				}
+				catch
+				{
+					MessageBox.Show("Bitte überprüfen Sie Ihre Eingaben");
+				}
+			}
+			else
+			{
+				MessageBox.Show("Bitte Feld ausfüllen");
 			}
 			
 		}
