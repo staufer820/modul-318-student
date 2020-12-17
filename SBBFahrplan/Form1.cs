@@ -98,7 +98,7 @@ namespace SBBFahrplan
 			{
 				MessageBox.Show("Bitte Feld ausfüllen");
 			}
-			
+			lbxTafel.Hide();
 		}
 
 		private void btnSearchStations_Click(object sender, EventArgs e)
@@ -217,6 +217,10 @@ namespace SBBFahrplan
 					lbxTafel.Items.Clear();
 					lbxTafel.Hide();
 				}
+			}
+			else
+			{
+				lbxTafel.Hide();
 			}
 		}
 
