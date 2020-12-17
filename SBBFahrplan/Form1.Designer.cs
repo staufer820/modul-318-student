@@ -38,6 +38,10 @@
 			this.Gleis = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Verspätung = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.panel1 = new System.Windows.Forms.Panel();
+			this.dtpTime = new System.Windows.Forms.DateTimePicker();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
+			this.dtpDate = new System.Windows.Forms.DateTimePicker();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.tbxFrom = new System.Windows.Forms.TextBox();
@@ -53,16 +57,14 @@
 			this.tbxStation = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.lblConnection = new System.Windows.Forms.Label();
-			this.dtpDate = new System.Windows.Forms.DateTimePicker();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.dtpTime = new System.Windows.Forms.DateTimePicker();
-			this.label6 = new System.Windows.Forms.Label();
-			this.tbxLocation = new System.Windows.Forms.TextBox();
-			this.btnSearchStations = new System.Windows.Forms.Button();
+			this.lbxLocations = new System.Windows.Forms.ListBox();
 			this.dgvStations = new System.Windows.Forms.DataGridView();
 			this.SName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.btnSearchStations = new System.Windows.Forms.Button();
+			this.tbxLocation = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.lblConnection = new System.Windows.Forms.Label();
+			this.lbxTafel = new System.Windows.Forms.ListBox();
 			this.panel2.SuspendLayout();
 			this.tabControl.SuspendLayout();
 			this.tabPage1.SuspendLayout();
@@ -188,6 +190,42 @@
 			this.panel1.Size = new System.Drawing.Size(691, 150);
 			this.panel1.TabIndex = 6;
 			// 
+			// dtpTime
+			// 
+			this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpTime.Location = new System.Drawing.Point(362, 97);
+			this.dtpTime.Name = "dtpTime";
+			this.dtpTime.Size = new System.Drawing.Size(164, 28);
+			this.dtpTime.TabIndex = 9;
+			this.dtpTime.Value = new System.DateTime(2020, 12, 17, 9, 5, 0, 0);
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.ForeColor = System.Drawing.Color.SaddleBrown;
+			this.label5.Location = new System.Drawing.Point(310, 103);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(47, 22);
+			this.label5.TabIndex = 8;
+			this.label5.Text = "Zeit:";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
+			this.label1.Location = new System.Drawing.Point(24, 103);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(70, 22);
+			this.label1.TabIndex = 7;
+			this.label1.Text = "Datum:";
+			// 
+			// dtpDate
+			// 
+			this.dtpDate.Location = new System.Drawing.Point(100, 97);
+			this.dtpDate.Name = "dtpDate";
+			this.dtpDate.Size = new System.Drawing.Size(164, 28);
+			this.dtpDate.TabIndex = 6;
+			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
@@ -254,6 +292,7 @@
 			// 
 			// tabPage3
 			// 
+			this.tabPage3.Controls.Add(this.lbxTafel);
 			this.tabPage3.Controls.Add(this.lblVerbindungenVon);
 			this.tabPage3.Controls.Add(this.btnStation);
 			this.tabPage3.Controls.Add(this.dgvConnections);
@@ -341,6 +380,8 @@
 			this.tbxStation.Name = "tbxStation";
 			this.tbxStation.Size = new System.Drawing.Size(184, 28);
 			this.tbxStation.TabIndex = 1;
+			this.tbxStation.TextChanged += new System.EventHandler(this.tbxStation_TextChanged);
+			this.tbxStation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxStation_KeyDown);
 			// 
 			// label4
 			// 
@@ -354,6 +395,7 @@
 			// 
 			// tabPage2
 			// 
+			this.tabPage2.Controls.Add(this.lbxLocations);
 			this.tabPage2.Controls.Add(this.dgvStations);
 			this.tabPage2.Controls.Add(this.btnSearchStations);
 			this.tabPage2.Controls.Add(this.tbxLocation);
@@ -366,68 +408,36 @@
 			this.tabPage2.Text = "Stationen";
 			this.tabPage2.UseVisualStyleBackColor = true;
 			// 
-			// lblConnection
+			// lbxLocations
 			// 
-			this.lblConnection.AutoSize = true;
-			this.lblConnection.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblConnection.ForeColor = System.Drawing.Color.Red;
-			this.lblConnection.Location = new System.Drawing.Point(40, 255);
-			this.lblConnection.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-			this.lblConnection.Name = "lblConnection";
-			this.lblConnection.Size = new System.Drawing.Size(0, 28);
-			this.lblConnection.TabIndex = 8;
+			this.lbxLocations.FormattingEnabled = true;
+			this.lbxLocations.ItemHeight = 21;
+			this.lbxLocations.Location = new System.Drawing.Point(103, 76);
+			this.lbxLocations.Name = "lbxLocations";
+			this.lbxLocations.Size = new System.Drawing.Size(170, 214);
+			this.lbxLocations.TabIndex = 4;
+			this.lbxLocations.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lbxLocations_KeyDown);
 			// 
-			// dtpDate
+			// dgvStations
 			// 
-			this.dtpDate.Location = new System.Drawing.Point(100, 97);
-			this.dtpDate.Name = "dtpDate";
-			this.dtpDate.Size = new System.Drawing.Size(164, 28);
-			this.dtpDate.TabIndex = 6;
+			this.dgvStations.BackgroundColor = System.Drawing.Color.SandyBrown;
+			this.dgvStations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvStations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SName});
+			this.dgvStations.Location = new System.Drawing.Point(-1, 142);
+			this.dgvStations.Name = "dgvStations";
+			this.dgvStations.RowHeadersWidth = 51;
+			this.dgvStations.RowTemplate.Height = 24;
+			this.dgvStations.Size = new System.Drawing.Size(702, 475);
+			this.dgvStations.TabIndex = 3;
 			// 
-			// label1
+			// SName
 			// 
-			this.label1.AutoSize = true;
-			this.label1.ForeColor = System.Drawing.Color.SaddleBrown;
-			this.label1.Location = new System.Drawing.Point(24, 103);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(70, 22);
-			this.label1.TabIndex = 7;
-			this.label1.Text = "Datum:";
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.ForeColor = System.Drawing.Color.SaddleBrown;
-			this.label5.Location = new System.Drawing.Point(310, 103);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(47, 22);
-			this.label5.TabIndex = 8;
-			this.label5.Text = "Zeit:";
-			// 
-			// dtpTime
-			// 
-			this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dtpTime.Location = new System.Drawing.Point(362, 97);
-			this.dtpTime.Name = "dtpTime";
-			this.dtpTime.Size = new System.Drawing.Size(164, 28);
-			this.dtpTime.TabIndex = 9;
-			this.dtpTime.Value = new System.DateTime(2020, 12, 17, 9, 5, 0, 0);
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(56, 51);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(41, 22);
-			this.label6.TabIndex = 0;
-			this.label6.Text = "Ort:";
-			// 
-			// tbxLocation
-			// 
-			this.tbxLocation.Location = new System.Drawing.Point(103, 48);
-			this.tbxLocation.Name = "tbxLocation";
-			this.tbxLocation.Size = new System.Drawing.Size(171, 28);
-			this.tbxLocation.TabIndex = 1;
+			this.SName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+			this.SName.HeaderText = "Name";
+			this.SName.MinimumWidth = 6;
+			this.SName.Name = "SName";
+			this.SName.Width = 650;
 			// 
 			// btnSearchStations
 			// 
@@ -445,26 +455,44 @@
 			this.btnSearchStations.UseVisualStyleBackColor = false;
 			this.btnSearchStations.Click += new System.EventHandler(this.btnSearchStations_Click);
 			// 
-			// dgvStations
+			// tbxLocation
 			// 
-			this.dgvStations.BackgroundColor = System.Drawing.Color.SandyBrown;
-			this.dgvStations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvStations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SName});
-			this.dgvStations.Location = new System.Drawing.Point(0, 135);
-			this.dgvStations.Name = "dgvStations";
-			this.dgvStations.RowHeadersWidth = 51;
-			this.dgvStations.RowTemplate.Height = 24;
-			this.dgvStations.Size = new System.Drawing.Size(702, 475);
-			this.dgvStations.TabIndex = 3;
+			this.tbxLocation.Location = new System.Drawing.Point(103, 48);
+			this.tbxLocation.Name = "tbxLocation";
+			this.tbxLocation.Size = new System.Drawing.Size(171, 28);
+			this.tbxLocation.TabIndex = 1;
+			this.tbxLocation.TextChanged += new System.EventHandler(this.tbxLocation_TextChanged);
+			this.tbxLocation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbxLocation_KeyDown);
 			// 
-			// SName
+			// label6
 			// 
-			this.SName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-			this.SName.HeaderText = "Name";
-			this.SName.MinimumWidth = 6;
-			this.SName.Name = "SName";
-			this.SName.Width = 650;
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(56, 51);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(41, 22);
+			this.label6.TabIndex = 0;
+			this.label6.Text = "Ort:";
+			// 
+			// lblConnection
+			// 
+			this.lblConnection.AutoSize = true;
+			this.lblConnection.Font = new System.Drawing.Font("Arial Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblConnection.ForeColor = System.Drawing.Color.Red;
+			this.lblConnection.Location = new System.Drawing.Point(40, 255);
+			this.lblConnection.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+			this.lblConnection.Name = "lblConnection";
+			this.lblConnection.Size = new System.Drawing.Size(0, 28);
+			this.lblConnection.TabIndex = 8;
+			// 
+			// lbxTafel
+			// 
+			this.lbxTafel.FormattingEnabled = true;
+			this.lbxTafel.ItemHeight = 21;
+			this.lbxTafel.Location = new System.Drawing.Point(112, 76);
+			this.lbxTafel.Name = "lbxTafel";
+			this.lbxTafel.Size = new System.Drawing.Size(183, 172);
+			this.lbxTafel.TabIndex = 5;
+			this.lbxTafel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lbxTafel_KeyDown);
 			// 
 			// Form
 			// 
@@ -534,6 +562,8 @@
 		private System.Windows.Forms.TextBox tbxLocation;
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.DataGridViewTextBoxColumn SName;
+		private System.Windows.Forms.ListBox lbxLocations;
+		private System.Windows.Forms.ListBox lbxTafel;
 	}
 }
 
